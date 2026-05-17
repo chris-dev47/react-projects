@@ -1,40 +1,25 @@
-import { useState } from "react"
-import "./App.css"
+import { useState, useEffect } from "react"
 
 function App() {
-  const [competences, setCompetences] = useState(["Python", "HTML/CSS", "JavaScript", "React"])
-  const [nouvelle, setNouvelle] = useState("")
+  const [utilisateurs, setUtilisateurs] = useState([])
 
-  const ajouter = () => {
-    if (nouvelle !== "") {
-      setCompetences([...competences, nouvelle])
-      setNouvelle("")
-    }
-  }
-
-  const supprimer = (competence) => {
-    setCompetences(competences.filter(c => c !== competence))
-  }
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => setUtilisateurs(data))
+  }, [])
 
   return (
     <div>
-      <h1>Mes Compétences</h1>
-
-      <input
-        value={nouvelle}
-        onChange={(e) => setNouvelle(e.target.value)}
-        placeholder="Nouvelle compétence"
-      />
-      <button onClick={ajouter}>Ajouter</button>
-
-      <ul>
-        {competences.map((competence, index) => (
-          <li key={index}>
-            {competence}
-            <button onClick={() => supprimer(competence)}>❌</button>
-          </li>
-        ))}
-      </ul>
+      <h1>Les 10 Utilisateurs</h1>
+      {utilisateurs.map((user) => (
+        <div key={user.id}>
+          <h3>{user.name}</h3>
+          <p>📧 {user.email}</p>
+          <p>📍 {user.address.city}</p>
+          <hr/>
+        </div>
+      ))}
     </div>
   )
 }
