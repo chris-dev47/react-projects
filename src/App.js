@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import Accueil from "./pages/Accueil"
+import Projets from "./pages/Projets"
+import Contact from "./pages/Contact"
+import "./App.css"
 
 function App() {
-  const [utilisateurs, setUtilisateurs] = useState([])
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(data => setUtilisateurs(data))
-  }, [])
-
   return (
-    <div>
-      <h1>Les 10 Utilisateurs</h1>
-      {utilisateurs.map((user) => (
-        <div key={user.id}>
-          <h3>{user.name}</h3>
-          <p>📧 {user.email}</p>
-          <p>📍 {user.address.city}</p>
-          <hr/>
-        </div>
-      ))}
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Accueil</Link>
+        <Link to="/projets">Projets</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+        <Route path="/projets" element={<Projets />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

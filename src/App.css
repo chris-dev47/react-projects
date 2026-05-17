@@ -1,8 +1,26 @@
-body {
-  background-color: #0f0f1a;
+nav {
+  background-color: #16213e;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #00d4ff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+nav a:hover {
   color: white;
-  font-family: Arial;
-  padding: 50px;
+}
+
+div {
+  padding: 40px;
+  background-color: #0f0f1a;
+  min-height: 100vh;
+  color: white;
 }
 
 h1 {
@@ -10,43 +28,11 @@ h1 {
   margin-bottom: 20px;
 }
 
-input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-  margin-right: 10px;
+h3 {
+  color: #00d4ff;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #00d4ff;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-li {
-  background-color: #16213e;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #00d4ff;
-}
-
-li button {
-  background-color: transparent;
-  color: red;
-  font-size: 18px;
-  padding: 0;
+p {
+  color: #aaaaaa;
+  margin: 5px 0;
 }
